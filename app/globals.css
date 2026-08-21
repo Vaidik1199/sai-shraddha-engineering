@@ -1,22 +1,32 @@
 @import "tailwindcss";
 
 :root {
+  /* =========================================================
+     PREMIUM LIGHT THEME
+     Pure White + Warm White + Black
+     ========================================================= */
+
+  /* Main canvas */
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #141414;
 
-  --surface: #fafafa;
-  --surface-elevated: #f5f5f5;
+  /* Warm architectural surfaces */
+  --surface: #f7f6f2;
+  --surface-elevated: #efeee9;
 
-  --muted: #737373;
-  --muted-foreground: #525252;
+  /* Secondary text */
+  --muted: #70706c;
+  --muted-foreground: #50504d;
 
-  --border: #e5e5e5;
-  --border-strong: #d4d4d4;
+  /* Warm neutral borders */
+  --border: #e4e2dc;
+  --border-strong: #ceccc5;
 
   /* Theme-aware primary button */
-  --button-background: #171717;
+  --button-background: #141414;
   --button-foreground: #ffffff;
 
+  /* Radius system */
   --radius-sm: 6px;
   --radius-md: 10px;
   --radius-lg: 16px;
@@ -24,21 +34,26 @@
 }
 
 .dark {
-  --background: #0a0a0a;
-  --foreground: #f5f5f5;
+  /* =========================================================
+     PREMIUM DARK THEME
+     Near Black + Charcoal + Soft White
+     ========================================================= */
 
-  --surface: #111111;
-  --surface-elevated: #171717;
+  --background: #0b0b0a;
+  --foreground: #f5f5f2;
 
-  --muted: #a3a3a3;
-  --muted-foreground: #d4d4d4;
+  --surface: #141413;
+  --surface-elevated: #1b1b19;
 
-  --border: #262626;
-  --border-strong: #404040;
+  --muted: #a3a29d;
+  --muted-foreground: #d2d1cb;
+
+  --border: #292927;
+  --border-strong: #41413e;
 
   /* Theme-aware primary button */
-  --button-background: #f5f5f5;
-  --button-foreground: #0a0a0a;
+  --button-background: #f5f5f2;
+  --button-foreground: #0b0b0a;
 }
 
 * {
@@ -107,24 +122,55 @@ img {
   height: auto;
 }
 
+/* =========================================================
+   TEXT SELECTION
+   ========================================================= */
+
 ::selection {
-  background: #171717;
+  background: #141414;
   color: #ffffff;
 }
 
 .dark ::selection {
-  background: #f5f5f5;
-  color: #0a0a0a;
+  background: #f5f5f2;
+  color: #0b0b0a;
 }
 
-/* Primary button */
+/* =========================================================
+   PRIMARY BUTTON
+   ========================================================= */
 
 .primary-button {
   background: var(--button-background);
   color: var(--button-foreground);
 }
 
-/* Scrollbar */
+.primary-button:hover {
+  opacity: 0.9;
+}
+
+/* =========================================================
+   SOLID THEME-AWARE CTA
+   Used where explicit light/dark contrast is required.
+   ========================================================= */
+
+.theme-cta {
+  background: #141414;
+  color: #ffffff;
+}
+
+.dark .theme-cta {
+  background: #f5f5f2;
+  color: #0b0b0a;
+}
+
+.theme-cta:hover {
+  opacity: 0.9;
+}
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
 
 ::-webkit-scrollbar {
   width: 8px;
@@ -135,15 +181,17 @@ img {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #a3a3a3;
+  background: #a6a49e;
   border-radius: 999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #737373;
+  background: #777570;
 }
 
-/* Layout */
+/* =========================================================
+   LAYOUT
+   ========================================================= */
 
 .container {
   width: min(100% - 32px, 1280px);
