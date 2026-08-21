@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { products } from "@/data/products";
 
@@ -37,14 +36,17 @@ export default function ProductList() {
               </p>
             </div>
 
-            {/* Arrow */}
-            <Link
-              href={`/products/${product.id}`}
-              aria-label={`View ${product.title}`}
+            {/* Visual interaction */}
+            <div
+              aria-hidden="true"
               className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[var(--border-strong)] text-[var(--foreground)] transition-all duration-300 group-hover:-translate-y-1 group-hover:bg-[var(--foreground)] group-hover:text-[var(--background)]"
             >
-              <ArrowUpRight size={17} strokeWidth={1.6} />
-            </Link>
+              <ArrowUpRight
+                size={17}
+                strokeWidth={1.6}
+                className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+              />
+            </div>
           </article>
         ))}
       </div>

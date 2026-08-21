@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import ProductList from "@/components/products/ProductList";
+import Process from "@/components/products/Process";
 
 export default function ProductsPage() {
   return (
@@ -46,6 +47,7 @@ export default function ProductsPage() {
         <div className="container pb-24 md:pb-32">
           <ProductList />
         </div>
+        <Process />
       </section>
 
       {/* Requirement CTA */}
