@@ -4,6 +4,8 @@ import FeaturedWork from "@/components/home/FeaturedWork";
 import Capabilities from "@/components/home/Capabilities";
 import WhyUs from "@/components/home/WhyUs";
 import ContactSection from "@/components/home/ContactSection";
+import LocationSection from "@/components/home/LocationSection";
+import Footer from "@/components/layout/Footer";
 
 export default function Home() {
   return (
@@ -14,6 +16,8 @@ export default function Home() {
       <Capabilities />
       <WhyUs />
       <ContactSection />
+      <LocationSection />
+      <Footer />
     </main>
   );
 }
