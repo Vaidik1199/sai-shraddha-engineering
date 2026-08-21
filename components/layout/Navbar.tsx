@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Menu, X, Sun, Moon } from "lucide-react";
 
@@ -14,12 +15,7 @@ export default function Navbar() {
   const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem("theme");
-
-    if (savedTheme === "dark") {
-      document.documentElement.classList.add("dark");
-      setIsDark(true);
-    }
+    setIsDark(document.documentElement.classList.contains("dark"));
   }, []);
 
   const toggleTheme = () => {
@@ -36,13 +32,22 @@ export default function Navbar() {
     setIsMenuOpen(false);
   };
 
+  const handleLogoClick = () => {
+    closeMenu();
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <header className="fixed inset-x-0 top-0 z-50">
       <div className="border-b border-[var(--border)] bg-[var(--background)]/95 backdrop-blur-md">
         <div className="container flex h-20 items-center justify-between">
-          <a
+          <Link
             href="/"
-            onClick={closeMenu}
+            onClick={handleLogoClick}
             className="group flex items-center gap-3"
             aria-label="Sai Shradha Engineering home"
           >
@@ -59,20 +64,20 @@ export default function Navbar() {
                 Engineering
               </p>
             </div>
-          </a>
+          </Link>
 
           <nav
             className="hidden items-center gap-8 md:flex"
             aria-label="Main navigation"
           >
             {navItems.map((item) => (
-              <a
+              <Link
                 key={item.href}
                 href={item.href}
                 className="text-[14px] font-medium text-[var(--muted)] transition-colors duration-200 hover:text-[var(--foreground)]"
               >
                 {item.label}
-              </a>
+              </Link>
             ))}
 
             <a
@@ -137,14 +142,14 @@ export default function Navbar() {
               aria-label="Mobile navigation"
             >
               {navItems.map((item) => (
-                <a
+                <Link
                   key={item.href}
                   href={item.href}
                   onClick={closeMenu}
                   className="border-b border-[var(--border)] py-4 text-base font-medium text-[var(--foreground)] last:border-b-0"
                 >
                   {item.label}
-                </a>
+                </Link>
               ))}
 
               <a
