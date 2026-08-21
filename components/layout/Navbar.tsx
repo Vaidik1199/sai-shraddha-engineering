@@ -50,12 +50,12 @@ export default function Navbar() {
               SS
             </div>
 
-            <div className="hidden sm:block">
-              <p className="text-[15px] font-semibold tracking-[-0.02em] text-[var(--foreground)]">
+            <div className="block min-w-0">
+              <p className="truncate text-[13px] font-semibold tracking-[-0.025em] text-[var(--foreground)] sm:text-[15px]">
                 Sai Shradha
               </p>
 
-              <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-[var(--muted)]">
+              <p className="text-[9px] font-medium uppercase tracking-[0.14em] text-[var(--muted)] sm:text-[11px] sm:tracking-[0.16em]">
                 Engineering
               </p>
             </div>
