@@ -2,31 +2,25 @@
 
 :root {
   /* =========================================================
-     PREMIUM LIGHT THEME
-     Pure White + Warm White + Black
+     EXPERIMENTAL LIGHT THEME
+     Sandstone + Espresso + Warm Ivory
      ========================================================= */
 
-  /* Main canvas */
-  --background: #ffffff;
-  --foreground: #141414;
+  --background: #f4f0e8;
+  --foreground: #211d18;
 
-  /* Warm architectural surfaces */
-  --surface: #f7f6f2;
-  --surface-elevated: #efeee9;
+  --surface: #e9e2d5;
+  --surface-elevated: #ddd4c5;
 
-  /* Secondary text */
-  --muted: #70706c;
-  --muted-foreground: #50504d;
+  --muted: #756d61;
+  --muted-foreground: #514a41;
 
-  /* Warm neutral borders */
-  --border: #e4e2dc;
-  --border-strong: #ceccc5;
+  --border: #d5ccbd;
+  --border-strong: #bdb2a1;
 
-  /* Theme-aware primary button */
-  --button-background: #141414;
-  --button-foreground: #ffffff;
+  --button-background: #211d18;
+  --button-foreground: #f8f5ee;
 
-  /* Radius system */
   --radius-sm: 6px;
   --radius-md: 10px;
   --radius-lg: 16px;
@@ -35,25 +29,24 @@
 
 .dark {
   /* =========================================================
-     PREMIUM DARK THEME
-     Near Black + Charcoal + Soft White
+     EXPERIMENTAL DARK THEME
+     Obsidian + Espresso + Warm Ivory
      ========================================================= */
 
-  --background: #0b0b0a;
-  --foreground: #f5f5f2;
+  --background: #0e0c0a;
+  --foreground: #f4efe6;
 
-  --surface: #141413;
-  --surface-elevated: #1b1b19;
+  --surface: #17130f;
+  --surface-elevated: #201b15;
 
-  --muted: #a3a29d;
-  --muted-foreground: #d2d1cb;
+  --muted: #a99f91;
+  --muted-foreground: #d8cfc1;
 
-  --border: #292927;
-  --border-strong: #41413e;
+  --border: #302a22;
+  --border-strong: #4a4034;
 
-  /* Theme-aware primary button */
-  --button-background: #f5f5f2;
-  --button-foreground: #0b0b0a;
+  --button-background: #f4efe6;
+  --button-foreground: #0e0c0a;
 }
 
 * {
@@ -127,13 +120,13 @@ img {
    ========================================================= */
 
 ::selection {
-  background: #141414;
-  color: #ffffff;
+  background: #211d18;
+  color: #f8f5ee;
 }
 
 .dark ::selection {
-  background: #f5f5f2;
-  color: #0b0b0a;
+  background: #f4efe6;
+  color: #0e0c0a;
 }
 
 /* =========================================================
@@ -151,17 +144,16 @@ img {
 
 /* =========================================================
    SOLID THEME-AWARE CTA
-   Used where explicit light/dark contrast is required.
    ========================================================= */
 
 .theme-cta {
-  background: #141414;
-  color: #ffffff;
+  background: #211d18;
+  color: #f8f5ee;
 }
 
 .dark .theme-cta {
-  background: #f5f5f2;
-  color: #0b0b0a;
+  background: #f4efe6;
+  color: #0e0c0a;
 }
 
 .theme-cta:hover {
@@ -181,12 +173,12 @@ img {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #a6a49e;
+  background: #9d9487;
   border-radius: 999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #777570;
+  background: #70675b;
 }
 
 /* =========================================================

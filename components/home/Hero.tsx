@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, MoveRight } from "lucide-react";
 import { company } from "@/data/company";
@@ -89,41 +90,39 @@ export default function Hero() {
 
           <div className="relative">
             <div className="relative aspect-[4/5] overflow-hidden border border-[var(--border)] bg-[var(--surface)]">
-              <div
-                className="absolute inset-0 opacity-[0.45]"
-                style={{
-                  backgroundImage: `
-                    linear-gradient(to right, var(--border) 1px, transparent 1px),
-                    linear-gradient(to bottom, var(--border) 1px, transparent 1px)
-                  `,
-                  backgroundSize: "48px 48px",
-                }}
+              <Image
+                src="/images/hero/sai-shradha-engineering-facility-exterior.jpeg"
+                alt="Sai Shradha Engineering facility"
+                fill
+                priority
+                sizes="(max-width: 1024px) 100vw, 45vw"
+                className="object-cover transition-transform duration-700 hover:scale-[1.02]"
               />
 
-              <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center">
-                <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-full border border-[var(--border-strong)] bg-[var(--background)]">
-                  <span className="text-lg font-semibold tracking-[-0.04em] text-[var(--foreground)]">
-                    SS
+              <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/5 to-transparent" />
+
+              <div className="absolute inset-x-0 bottom-0 p-6 md:p-8">
+                <div className="flex items-end justify-between gap-6">
+                  <div>
+                    <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-white/70">
+                      Sai Shradha Engineering
+                    </p>
+
+                    <p className="mt-2 text-sm leading-6 text-white">
+                      Engineering & fabrication facility
+                    </p>
+                  </div>
+
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/30 bg-black/10 text-white backdrop-blur-sm">
+                    <ArrowUpRight size={17} strokeWidth={1.7} />
                   </span>
                 </div>
-
-                <p className="text-xs font-medium uppercase tracking-[0.2em] text-[var(--muted)]">
-                  Sai Shradha Engineering
-                </p>
-
-                <p className="mt-3 max-w-xs text-sm leading-6 text-[var(--muted)]">
-                  Your fabrication and engineering work will be featured here.
-                </p>
               </div>
 
-              <span className="absolute left-5 top-5 h-3 w-3 border-l border-t border-[var(--foreground)]" />
-              <span className="absolute right-5 top-5 h-3 w-3 border-r border-t border-[var(--foreground)]" />
-              <span className="absolute bottom-5 left-5 h-3 w-3 border-b border-l border-[var(--foreground)]" />
-              <span className="absolute bottom-5 right-5 h-3 w-3 border-b border-r border-[var(--foreground)]" />
-
-              <span className="absolute bottom-5 left-1/2 -translate-x-1/2 whitespace-nowrap text-[10px] uppercase tracking-[0.18em] text-[var(--muted)]">
-                Precision • Fabrication • Reliability
-              </span>
+              <span className="absolute left-5 top-5 h-3 w-3 border-l border-t border-white/70" />
+              <span className="absolute right-5 top-5 h-3 w-3 border-r border-t border-white/70" />
+              <span className="absolute bottom-5 left-5 h-3 w-3 border-b border-l border-white/70" />
+              <span className="absolute bottom-5 right-5 h-3 w-3 border-b border-r border-white/70" />
             </div>
           </div>
         </div>

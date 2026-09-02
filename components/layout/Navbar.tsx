@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Menu, X, Sun, Moon } from "lucide-react";
@@ -15,16 +16,22 @@ export default function Navbar() {
   const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
-    setIsDark(document.documentElement.classList.contains("dark"));
+    const savedTheme = localStorage.getItem("theme");
+
+    if (savedTheme === "dark") {
+      document.documentElement.classList.add("dark");
+      setIsDark(true);
+    } else {
+      document.documentElement.classList.remove("dark");
+      setIsDark(false);
+    }
   }, []);
 
   const toggleTheme = () => {
     const nextTheme = !isDark;
 
     setIsDark(nextTheme);
-
     document.documentElement.classList.toggle("dark", nextTheme);
-
     localStorage.setItem("theme", nextTheme ? "dark" : "light");
   };
 
@@ -51,8 +58,15 @@ export default function Navbar() {
             className="group flex items-center gap-3"
             aria-label="Sai Shradha Engineering home"
           >
-            <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-[var(--border-strong)] bg-[var(--surface)] text-sm font-semibold tracking-tight text-[var(--foreground)]">
-              SS
+            <div className="relative flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-lg">
+              <Image
+                src="/images/logo/sai-shradha-logo.png"
+                alt="Sai Shradha Engineering logo"
+                fill
+                sizes="40px"
+                className="object-contain"
+                priority
+              />
             </div>
 
             <div className="block min-w-0">
@@ -81,7 +95,7 @@ export default function Navbar() {
             ))}
 
             <a
-              href="#contact"
+              href="/#contact"
               className="primary-button rounded-full px-5 py-2.5 text-[13px] font-medium transition-all duration-200 hover:-translate-y-0.5 hover:opacity-90"
             >
               Contact Us
@@ -153,7 +167,7 @@ export default function Navbar() {
               ))}
 
               <a
-                href="#contact"
+                href="/#contact"
                 onClick={closeMenu}
                 className="primary-button mt-5 flex items-center justify-center rounded-full px-5 py-3 text-sm font-medium transition-opacity duration-200 hover:opacity-90"
               >

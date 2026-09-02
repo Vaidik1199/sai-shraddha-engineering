@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { company } from "@/data/company";
@@ -8,6 +9,8 @@ const navigation = [
     { label: "Products", href: "/products" },
 ];
 
+const mapUrl = "https://maps.app.goo.gl/2b5ZBAPVzP4JdDyR6";
+
 export default function Footer() {
     return (
         <footer className="bg-[var(--background)]">
@@ -16,8 +19,14 @@ export default function Footer() {
                     {/* Brand */}
                     <div>
                         <Link href="/" className="inline-flex items-center gap-3">
-                            <span className="flex h-10 w-10 items-center justify-center rounded-lg border border-[var(--border-strong)] bg-[var(--surface)] text-sm font-semibold text-[var(--foreground)]">
-                                SS
+                            <span className="relative flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-[var(--border-strong)] bg-[var(--surface)]">
+                                <Image
+                                    src="/images/logo/sai-shradha-logo.png"
+                                    alt="Sai Shradha Engineering logo"
+                                    fill
+                                    sizes="40px"
+                                    className="object-contain p-1"
+                                />
                             </span>
 
                             <span>
@@ -72,7 +81,7 @@ export default function Footer() {
                         <div className="mt-5 space-y-4">
                             <a
                                 href={`tel:${company.contact.phone}`}
-                                className="flex items-start gap-3 text-sm text-[var(--foreground)]"
+                                className="flex items-start gap-3 text-sm text-[var(--foreground)] transition-colors hover:text-[var(--muted)]"
                             >
                                 <Phone
                                     size={15}
@@ -85,7 +94,7 @@ export default function Footer() {
 
                             <a
                                 href={`mailto:${company.contact.email}`}
-                                className="flex items-start gap-3 break-all text-sm text-[var(--foreground)]"
+                                className="flex items-start gap-3 break-all text-sm text-[var(--foreground)] transition-colors hover:text-[var(--muted)]"
                             >
                                 <Mail
                                     size={15}
@@ -96,19 +105,27 @@ export default function Footer() {
                                 {company.contact.email}
                             </a>
 
-                            <div className="flex items-start gap-3 text-sm leading-6 text-[var(--muted)]">
+                            <a
+                                href={mapUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="Open Sai Shradha Engineering location in Google Maps"
+                                className="group flex items-start gap-3 text-sm leading-6 text-[var(--muted)] transition-colors duration-300 hover:text-[var(--foreground)]"
+                            >
                                 <MapPin
                                     size={15}
                                     strokeWidth={1.6}
-                                    className="mt-0.5 shrink-0"
+                                    className="mt-0.5 shrink-0 transition-transform duration-300 group-hover:-translate-y-0.5"
                                 />
 
-                                <span>
+                                <span className="relative">
                                     Bhosari, Pune
                                     <br />
                                     Maharashtra — 411026
+
+                                    <span className="absolute bottom-0 left-0 h-px w-0 bg-[var(--foreground)] transition-all duration-300 group-hover:w-full" />
                                 </span>
-                            </div>
+                            </a>
                         </div>
                     </div>
                 </div>

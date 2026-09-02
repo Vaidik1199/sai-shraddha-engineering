@@ -31,10 +31,9 @@ export default function WhyUs() {
   return (
     <section className="border-b border-[var(--border)] bg-[var(--surface)]">
       <div className="container py-24 md:py-32 lg:py-40">
-        {/* Heading */}
         <div className="grid gap-10 lg:grid-cols-[0.7fr_1.3fr] lg:gap-20">
           <div>
-            <div className="flex items-center gap-3">
+            <div className="sticky top-28 flex items-center gap-3">
               <span className="h-px w-8 bg-[var(--foreground)]" />
 
               <span className="text-[11px] font-medium uppercase tracking-[0.2em] text-[var(--muted)]">
@@ -44,7 +43,7 @@ export default function WhyUs() {
           </div>
 
           <div>
-            <h2 className="max-w-4xl text-[clamp(2.2rem,5vw,4.8rem)] font-semibold leading-[0.98] tracking-[-0.055em] text-[var(--foreground)]">
+            <h2 className="max-w-4xl text-[clamp(2.3rem,5vw,4.8rem)] font-semibold leading-[0.97] tracking-[-0.055em] text-[var(--foreground)]">
               Built on quality. Driven by precision.
             </h2>
 
@@ -56,12 +55,11 @@ export default function WhyUs() {
           </div>
         </div>
 
-        {/* Strengths */}
         <div className="mt-16 grid border-y border-[var(--border)] md:grid-cols-2">
           {strengths.map((strength, index) => (
             <article
               key={strength.number}
-              className={`group px-0 py-8 md:px-8 md:py-10 ${
+              className={`group relative px-0 py-8 md:px-8 md:py-10 ${
                 index % 2 !== 0
                   ? "md:border-l md:border-[var(--border)]"
                   : ""
@@ -71,13 +69,9 @@ export default function WhyUs() {
                   : ""
               }`}
             >
-              <div className="flex items-start justify-between gap-6">
-                <span className="text-[10px] font-medium tracking-[0.16em] text-[var(--muted)]">
-                  {strength.number}
-                </span>
-
-                <span className="h-2 w-2 rounded-full border border-[var(--border-strong)] transition-colors duration-300 group-hover:bg-[var(--foreground)]" />
-              </div>
+              <span className="text-[10px] font-medium tabular-nums tracking-[0.16em] text-[var(--muted)]">
+                {strength.number}
+              </span>
 
               <h3 className="mt-12 text-xl font-medium tracking-[-0.03em] text-[var(--foreground)] md:text-2xl">
                 {strength.title}
@@ -86,16 +80,23 @@ export default function WhyUs() {
               <p className="mt-4 max-w-md text-sm leading-6 text-[var(--muted)]">
                 {strength.description}
               </p>
+
+              <span className="absolute bottom-0 left-0 h-px w-0 bg-[var(--foreground)] transition-all duration-300 group-hover:w-full" />
             </article>
           ))}
         </div>
 
-        {/* Mission / Vision */}
         <div className="mt-20 grid gap-px overflow-hidden border border-[var(--border)] bg-[var(--border)] md:grid-cols-2">
           <article className="bg-[var(--background)] p-8 md:p-10 lg:p-12">
-            <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-[var(--muted)]">
-              Our Mission
-            </p>
+            <div className="flex items-center justify-between">
+              <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-[var(--muted)]">
+                Our Mission
+              </p>
+
+              <span className="text-[10px] tabular-nums text-[var(--muted)]">
+                01
+              </span>
+            </div>
 
             <p className="mt-8 max-w-xl text-xl leading-8 tracking-[-0.025em] text-[var(--foreground)] md:text-2xl md:leading-9">
               {company.mission}
@@ -103,9 +104,15 @@ export default function WhyUs() {
           </article>
 
           <article className="bg-[var(--background)] p-8 md:p-10 lg:p-12">
-            <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-[var(--muted)]">
-              Our Vision
-            </p>
+            <div className="flex items-center justify-between">
+              <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-[var(--muted)]">
+                Our Vision
+              </p>
+
+              <span className="text-[10px] tabular-nums text-[var(--muted)]">
+                02
+              </span>
+            </div>
 
             <p className="mt-8 max-w-xl text-xl leading-8 tracking-[-0.025em] text-[var(--foreground)] md:text-2xl md:leading-9">
               {company.vision}

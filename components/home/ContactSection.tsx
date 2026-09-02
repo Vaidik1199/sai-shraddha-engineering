@@ -1,15 +1,43 @@
 "use client";
 
-import { useState } from "react";
-import { Mail, Phone, ArrowUpRight } from "lucide-react";
+import { useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
+import { Mail, Phone, ArrowUpRight, CheckCircle2, AlertCircle } from "lucide-react";
 import { company } from "@/data/company";
 
-export default function ContactSection() {
-  const [submitted, setSubmitted] = useState(false);
+type SubmissionStatus = "idle" | "sending" | "success" | "error";
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+export default function ContactSection() {
+  const formRef = useRef<HTMLFormElement>(null);
+  const [status, setStatus] = useState<SubmissionStatus>("idle");
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setSubmitted(true);
+
+    if (!formRef.current || status === "sending") return;
+
+    setStatus("sending");
+
+    try {
+      await emailjs.sendForm(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+        formRef.current,
+        {
+          publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!,
+        }
+      );
+
+      formRef.current.reset();
+      setStatus("success");
+    } catch (error) {
+      console.error("EmailJS enquiry error:", error);
+      setStatus("error");
+    }
+  };
+
+  const handleReset = () => {
+    setStatus("idle");
   };
 
   return (
@@ -48,35 +76,67 @@ export default function ContactSection() {
         <div className="mt-16 grid gap-px overflow-hidden border border-[var(--border)] bg-[var(--border)] lg:grid-cols-[1.3fr_0.7fr]">
           {/* Form */}
           <div className="bg-[var(--background)] p-7 md:p-10 lg:p-12">
-            {submitted ? (
+            {status === "success" ? (
               <div className="flex min-h-[500px] flex-col items-start justify-center">
                 <div className="flex h-12 w-12 items-center justify-center rounded-full border border-[var(--border-strong)]">
-                  <ArrowUpRight
-                    size={19}
+                  <CheckCircle2
+                    size={20}
                     strokeWidth={1.6}
                     className="text-[var(--foreground)]"
                   />
                 </div>
 
                 <h3 className="mt-7 text-2xl font-semibold tracking-[-0.035em] text-[var(--foreground)]">
-                  Thank you for your enquiry.
+                  Enquiry sent successfully.
                 </h3>
 
                 <p className="mt-3 max-w-md text-sm leading-6 text-[var(--muted)]">
-                  Your enquiry has been recorded. We&apos;ll connect with you
-                  regarding your requirement.
+                  Thank you for contacting Sai Shradha Engineering. Your
+                  enquiry has been sent successfully and our team will get
+                  back to you regarding your requirement.
                 </p>
 
                 <button
                   type="button"
-                  onClick={() => setSubmitted(false)}
+                  onClick={handleReset}
                   className="mt-7 text-sm font-medium text-[var(--foreground)] underline underline-offset-4"
                 >
                   Send another enquiry
                 </button>
               </div>
+            ) : status === "error" ? (
+              <div className="flex min-h-[500px] flex-col items-start justify-center">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full border border-[var(--border-strong)]">
+                  <AlertCircle
+                    size={20}
+                    strokeWidth={1.6}
+                    className="text-[var(--foreground)]"
+                  />
+                </div>
+
+                <h3 className="mt-7 text-2xl font-semibold tracking-[-0.035em] text-[var(--foreground)]">
+                  Something went wrong.
+                </h3>
+
+                <p className="mt-3 max-w-md text-sm leading-6 text-[var(--muted)]">
+                  We couldn&apos;t send your enquiry right now. Please try
+                  again, or contact us directly using the details provided.
+                </p>
+
+                <button
+                  type="button"
+                  onClick={handleReset}
+                  className="mt-7 text-sm font-medium text-[var(--foreground)] underline underline-offset-4"
+                >
+                  Try again
+                </button>
+              </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-7">
+              <form
+                ref={formRef}
+                onSubmit={handleSubmit}
+                className="space-y-7"
+              >
                 <div className="grid gap-7 sm:grid-cols-2">
                   <div>
                     <label
@@ -154,15 +214,15 @@ export default function ContactSection() {
 
                 <div>
                   <label
-                    htmlFor="requirement"
+                    htmlFor="service"
                     className="mb-2 block text-xs font-medium uppercase tracking-[0.14em] text-[var(--muted)]"
                   >
                     Requirement
                   </label>
 
                   <select
-                    id="requirement"
-                    name="requirement"
+                    id="service"
+                    name="service"
                     required
                     defaultValue=""
                     className="h-12 w-full border-b border-[var(--border-strong)] bg-[var(--background)] px-0 text-sm text-[var(--foreground)] outline-none focus:border-[var(--foreground)]"
@@ -170,6 +230,7 @@ export default function ContactSection() {
                     <option value="" disabled>
                       Select a requirement
                     </option>
+
                     {company.services.map((service) => (
                       <option key={service} value={service}>
                         {service}
@@ -198,15 +259,18 @@ export default function ContactSection() {
 
                 <button
                   type="submit"
-                  className="primary-button group inline-flex h-12 items-center justify-center gap-3 rounded-full px-6 text-sm font-medium transition-all duration-300 hover:-translate-y-0.5 hover:opacity-90"
+                  disabled={status === "sending"}
+                  className="primary-button group inline-flex h-12 items-center justify-center gap-3 rounded-full px-6 text-sm font-medium transition-all duration-300 hover:-translate-y-0.5 hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0"
                 >
-                  Send Enquiry
+                  {status === "sending" ? "Sending..." : "Send Enquiry"}
 
-                  <ArrowUpRight
-                    size={16}
-                    strokeWidth={1.8}
-                    className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-                  />
+                  {status !== "sending" && (
+                    <ArrowUpRight
+                      size={16}
+                      strokeWidth={1.8}
+                      className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                    />
+                  )}
                 </button>
               </form>
             )}

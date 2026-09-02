@@ -19,9 +19,9 @@ export default function LocationSection() {
                     </div>
 
                     {/* Content */}
-                    <div>
-                        <div className="flex items-start justify-between gap-8">
-                            <div>
+                    <div className="min-w-0">
+                        <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between sm:gap-8">
+                            <div className="min-w-0">
                                 <h2 className="text-[clamp(2.2rem,5vw,4.8rem)] font-semibold leading-[0.98] tracking-[-0.055em] text-[var(--foreground)]">
                                     Visit our facility.
                                 </h2>
@@ -60,8 +60,8 @@ export default function LocationSection() {
                         </div>
 
                         {/* Google Maps */}
-                        <div className="mt-12 overflow-hidden border border-[var(--border)] bg-[var(--background)]">
-                            <div className="relative aspect-[16/8] min-h-[300px]">
+                        <div className="mt-12 w-full overflow-hidden border border-[var(--border)] bg-[var(--background)]">
+                            <div className="relative h-[280px] w-full sm:h-[340px] md:h-[400px] lg:h-[460px]">
                                 <iframe
                                     title="Sai Shradha Engineering location"
                                     src="https://www.google.com/maps?q=18.6493904,73.8362326&z=17&output=embed"
