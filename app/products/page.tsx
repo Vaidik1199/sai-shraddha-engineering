@@ -1,7 +1,23 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import ProductList from "@/components/products/ProductList";
 import Process from "@/components/products/Process";
+
+export const metadata: Metadata = {
+  title: "Fabrication Services & Capabilities",
+  description:
+    "Explore MS, SS, structural, industrial, custom, machine and equipment fabrication, and welding and assembly services from Sai Shradha Engineering in Pune.",
+  alternates: {
+    canonical: "/products",
+  },
+  openGraph: {
+    title: "Fabrication Services & Capabilities | Sai Shradha Engineering",
+    description:
+      "Explore MS, SS, structural, industrial, custom, machine and equipment fabrication, and welding and assembly services in Pune.",
+    url: "/products",
+  },
+};
 
 export default function ProductsPage() {
   return (

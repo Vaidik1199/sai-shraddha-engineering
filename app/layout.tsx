@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import FloatingContact from "@/components/ui/FloatingContact";
+import StructuredData from "@/components/seo/StructuredData";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,10 +15,80 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const siteUrl = "https://sai-shradha-engineering.vercel.app";
+const siteName = "Sai Shradha Engineering";
+const siteDescription =
+  "Sai Shradha Engineering is a Pune-based fabrication company specializing in MS, SS, structural, industrial, and customized fabrication solutions.";
+
 export const metadata: Metadata = {
-  title: "Sai Shraddha Engineering",
-  description:
-    "Sai Shraddha Engineering — Precision engineering, quality workmanship, and reliable industrial solutions.",
+  metadataBase: new URL(siteUrl),
+
+  title: {
+    default: "Sai Shradha Engineering | Fabrication Company in Pune",
+    template: "%s | Sai Shradha Engineering",
+  },
+
+  description: siteDescription,
+
+  keywords: [
+    "Sai Shradha Engineering",
+    "Sai Shradha Engineering Pune",
+    "fabrication company Pune",
+    "MS fabrication Pune",
+    "SS fabrication Pune",
+    "industrial fabrication Pune",
+    "structural fabrication Pune",
+    "custom fabrication Pune",
+    "machine equipment fabrication Pune",
+    "welding assembly Pune",
+    "engineering fabrication Pune",
+  ],
+
+  applicationName: siteName,
+
+  authors: [
+    {
+      name: siteName,
+    },
+  ],
+
+  creator: siteName,
+  publisher: siteName,
+
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-video-preview": -1,
+      "max-snippet": -1,
+    },
+  },
+
+  openGraph: {
+    type: "website",
+    locale: "en_IN",
+    url: siteUrl,
+    siteName,
+    title: "Sai Shradha Engineering | Fabrication Company in Pune",
+    description: siteDescription,
+    images: [
+      {
+        url: "/images/logo/sai-shradha-logo.png",
+        alt: "Sai Shradha Engineering logo",
+      },
+    ],
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Sai Shradha Engineering | Fabrication Company in Pune",
+    description: siteDescription,
+    images: ["/images/logo/sai-shradha-logo.png"],
+  },
+
   icons: {
     icon: "/images/logo/sai-shradha-logo.png",
     shortcut: "/images/logo/sai-shradha-logo.png",
@@ -55,6 +126,7 @@ export default function RootLayout({
         <Navbar />
         {children}
         <FloatingContact />
+        <StructuredData />
       </body>
     </html>
   );

@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 
@@ -7,6 +8,21 @@ import Services from "@/components/about/Services";
 import MissionVision from "@/components/about/MissionVision";
 import AboutClosing from "@/components/about/AboutClosing";
 import { company } from "@/data/company";
+
+export const metadata: Metadata = {
+  title: "About Us | Engineering & Fabrication in Pune",
+  description:
+    "Learn about Sai Shradha Engineering, a Pune-based fabrication company providing MS, SS, structural, industrial, and customized engineering fabrication solutions.",
+  alternates: {
+    canonical: "/about",
+  },
+  openGraph: {
+    title: "About Sai Shradha Engineering | Fabrication in Pune",
+    description:
+      "Learn about Sai Shradha Engineering and our approach to quality MS, SS, structural, industrial, and customized fabrication work in Pune.",
+    url: "/about",
+  },
+};
 
 export default function AboutPage() {
   return (

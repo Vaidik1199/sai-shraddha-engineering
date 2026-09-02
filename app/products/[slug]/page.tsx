@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -11,10 +12,60 @@ type ProductPageProps = {
   }>;
 };
 
+const siteUrl = "https://sai-shradha-engineering.vercel.app";
+
 export function generateStaticParams() {
   return products.map((product) => ({
     slug: product.id,
   }));
+}
+
+export async function generateMetadata({
+  params,
+}: ProductPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const product = products.find((item) => item.id === slug);
+
+  if (!product) {
+    return {
+      title: "Product Not Found",
+      robots: {
+        index: false,
+        follow: false,
+      },
+    };
+  }
+
+  const title = `${product.title} in Pune`;
+  const description = `${product.description} Sai Shradha Engineering provides ${product.shortTitle.toLowerCase()} fabrication solutions according to drawings, dimensions, specifications, and application requirements.`;
+
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: `/products/${product.id}`,
+    },
+    openGraph: {
+      title: `${product.title} | Sai Shradha Engineering`,
+      description,
+      url: `/products/${product.id}`,
+      type: "website",
+      images: product.image
+        ? [
+            {
+              url: product.image,
+              alt: `${product.title} - Sai Shradha Engineering`,
+            },
+          ]
+        : undefined,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${product.title} | Sai Shradha Engineering`,
+      description,
+      images: product.image ? [product.image] : undefined,
+    },
+  };
 }
 
 export default async function ProductDetailPage({
@@ -84,9 +135,7 @@ export default async function ProductDetailPage({
                   Sai Shradha Engineering
                 </p>
 
-                <p className="mt-2 text-sm text-white">
-                  {product.title}
-                </p>
+                <p className="mt-2 text-sm text-white">{product.title}</p>
               </div>
 
               <div className="absolute right-5 top-5 flex h-9 w-9 items-center justify-center border border-white/30 bg-black/10 text-white backdrop-blur-sm md:right-8 md:top-8">
