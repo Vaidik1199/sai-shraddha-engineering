@@ -2,24 +2,24 @@
 
 :root {
   /* =========================================================
-     PREMIUM LIGHT THEME
-     Ivory + Graphite + Deep Indigo
+     SAI SHRADHA BRAND THEME
+     Saffron + Deep Blue + Charcoal
      ========================================================= */
 
-  --background: #f7f8fa;
-  --foreground: #111318;
+  --background: #f5f3ed;
+  --foreground: #101722;
 
-  --surface: #e8edf5;
-  --surface-elevated: #dbe3ef;
+  --surface: #0f1b2d;
+  --surface-elevated: #172944;
 
-  --muted: #69717d;
-  --muted-foreground: #454d59;
+  --muted: #667080;
+  --muted-foreground: #3f4b5c;
 
-  --border: #d5dce6;
-  --border-strong: #b7c1cf;
+  --border: #d4d1c8;
+  --border-strong: #aeb1b5;
 
-  --button-background: #111318;
-  --button-foreground: #f8fafc;
+  --button-background: #102a52;
+  --button-foreground: #ffffff;
 
   --radius-sm: 6px;
   --radius-md: 10px;
@@ -29,24 +29,24 @@
 
 .dark {
   /* =========================================================
-     PREMIUM DARK THEME
-     Graphite + Deep Indigo + Cool Ivory
+     DARK THEME
+     Midnight Blue + Deep Black + Saffron
      ========================================================= */
 
-  --background: #080a0f;
-  --foreground: #f4f6f8;
+  --background: #070a0f;
+  --foreground: #f7f5ef;
 
-  --surface: #101521;
-  --surface-elevated: #182131;
+  --surface: #0d1727;
+  --surface-elevated: #14243b;
 
-  --muted: #969fac;
-  --muted-foreground: #c9ced6;
+  --muted: #929dac;
+  --muted-foreground: #c8ced7;
 
-  --border: #252e3c;
-  --border-strong: #3b485b;
+  --border: #24354d;
+  --border-strong: #3b526f;
 
-  --button-background: #f4f6f8;
-  --button-foreground: #080a0f;
+  --button-background: #f4a51c;
+  --button-foreground: #101722;
 }
 
 * {
@@ -120,13 +120,13 @@ img {
    ========================================================= */
 
 ::selection {
-  background: #315f9a;
-  color: #ffffff;
+  background: #f4a51c;
+  color: #101722;
 }
 
 .dark ::selection {
-  background: #7da6dc;
-  color: #080a0f;
+  background: #f4a51c;
+  color: #101722;
 }
 
 /* =========================================================
@@ -147,13 +147,13 @@ img {
    ========================================================= */
 
 .theme-cta {
-  background: #111318;
-  color: #f8fafc;
+  background: #102a52;
+  color: #ffffff;
 }
 
 .dark .theme-cta {
-  background: #f4f6f8;
-  color: #080a0f;
+  background: #f4a51c;
+  color: #101722;
 }
 
 .theme-cta:hover {
@@ -173,12 +173,12 @@ img {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #9aa5b4;
+  background: #7b8798;
   border-radius: 999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #697789;
+  background: #f4a51c;
 }
 
 /* =========================================================
