@@ -3,23 +3,23 @@
 :root {
   /* =========================================================
      PREMIUM LIGHT THEME
-     Warm White + Soft Steel Blue + Charcoal
+     Ivory + Graphite + Deep Indigo
      ========================================================= */
 
-  --background: #fbfcfd;
-  --foreground: #171a1d;
+  --background: #f7f8fa;
+  --foreground: #111318;
 
-  --surface: #f0f4f7;
-  --surface-elevated: #e4ebf0;
+  --surface: #e8edf5;
+  --surface-elevated: #dbe3ef;
 
-  --muted: #68727a;
-  --muted-foreground: #4c565e;
+  --muted: #69717d;
+  --muted-foreground: #454d59;
 
-  --border: #dce3e8;
-  --border-strong: #c3cdd5;
+  --border: #d5dce6;
+  --border-strong: #b7c1cf;
 
-  --button-background: #171a1d;
-  --button-foreground: #f8fafb;
+  --button-background: #111318;
+  --button-foreground: #f8fafc;
 
   --radius-sm: 6px;
   --radius-md: 10px;
@@ -30,23 +30,23 @@
 .dark {
   /* =========================================================
      PREMIUM DARK THEME
-     Deep Navy + Graphite + Cool Ivory
+     Graphite + Deep Indigo + Cool Ivory
      ========================================================= */
 
-  --background: #0b0e11;
-  --foreground: #f2f5f7;
+  --background: #080a0f;
+  --foreground: #f4f6f8;
 
-  --surface: #12171c;
-  --surface-elevated: #1a2229;
+  --surface: #101521;
+  --surface-elevated: #182131;
 
-  --muted: #9ba6ae;
-  --muted-foreground: #cbd2d7;
+  --muted: #969fac;
+  --muted-foreground: #c9ced6;
 
-  --border: #273038;
-  --border-strong: #3b4852;
+  --border: #252e3c;
+  --border-strong: #3b485b;
 
-  --button-background: #f2f5f7;
-  --button-foreground: #0b0e11;
+  --button-background: #f4f6f8;
+  --button-foreground: #080a0f;
 }
 
 * {
@@ -120,13 +120,13 @@ img {
    ========================================================= */
 
 ::selection {
-  background: #1d5f8a;
+  background: #315f9a;
   color: #ffffff;
 }
 
 .dark ::selection {
-  background: #8bbddd;
-  color: #0b0e11;
+  background: #7da6dc;
+  color: #080a0f;
 }
 
 /* =========================================================
@@ -147,13 +147,13 @@ img {
    ========================================================= */
 
 .theme-cta {
-  background: #171a1d;
-  color: #f8fafb;
+  background: #111318;
+  color: #f8fafc;
 }
 
 .dark .theme-cta {
-  background: #f2f5f7;
-  color: #0b0e11;
+  background: #f4f6f8;
+  color: #080a0f;
 }
 
 .theme-cta:hover {
@@ -173,12 +173,12 @@ img {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #aeb9c1;
+  background: #9aa5b4;
   border-radius: 999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #87949d;
+  background: #697789;
 }
 
 /* =========================================================
